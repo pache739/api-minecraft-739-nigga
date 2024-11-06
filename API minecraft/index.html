@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Personajes de Minecraft</title>
+
+   <style>
+       body {
+           font-family: 'Courier New', Courier, monospace;
+           font-size: larger;
+           color: rgb(136, 141, 138);
+           background: rgb(2, 0, 36);
+           background: linear-gradient(90deg, rgb(53, 54, 53) 25%, rgb(47, 49, 49) 50%, rgb(54, 53, 53) 25%);
+       }
+       
+       h1 {
+           text-align: center;
+           color: white;
+       }
+
+       .character {
+           display: flex;
+           align-items: center;
+           margin-bottom: 20px;
+           padding: 10px;
+           background-color: rgba(10, 10, 10, 0.556);
+           border-radius: 14px;
+           box-shadow: violet;
+       }
+
+       .character img {
+           border-radius: 50%;
+           margin-right: 15px;
+       }
+
+       .character-container {
+           display: flex;
+           flex-direction: column;
+           align-items: center;
+       }
+
+       hr {
+           border: 1px solid #ddd;
+           width: 100%;
+       }
+
+   </style>
+</head>
+<body>
+   <h1>Personajes de Minecraft</h1>
+   <hr>
+   <div id="character-container" class="character-container"></div>
+
+   <script>
+       async function obtenerPersonajesDeMinecraft() {
+           try {
+               // Simulando una "API" de personajes de Minecraft
+               const personajes = [
+                   {
+                       name: "Steve",
+                       image: "https://www.minecraft.net/content/dam/minecraft/brand/minecraft-logo.png",
+                       species: "Humano",
+                       status: "Vivo",
+                       type: "Jugador",
+                       gender: "Masculino",
+                       origin: { name: "Minecraft Mundo" }
+                   },
+                   {
+                       name: "Alex",
+                       image: "https://www.minecraft.net/content/dam/minecraft/brand/minecraft-logo.png",
+                       species: "Humano",
+                       status: "Vivo",
+                       type: "Jugador",
+                       gender: "Femenino",
+                       origin: { name: "Minecraft Mundo" }
+                   },
+                   {
+                       name: "Creeper",
+                       image: "https://static.wikia.nocookie.net/minecraft/images/5/55/Creeper_Head.png/revision/latest?cb=20210127025643",
+                       species: "Monstruo",
+                       status: "Vivo",
+                       type: "Hostil",
+                       gender: "N/A",
+                       origin: { name: "Minecraft Mundo" }
+                   },
+                   {
+                       name: "Enderman",
+                       image: "https://static.wikia.nocookie.net/minecraft/images/3/33/Enderman_Mob_Head.png/revision/latest?cb=20200423202011",
+                       species: "Enderman",
+                       status: "Vivo",
+                       type: "Neutro (hasta que lo miras)",
+                       gender: "N/A",
+                       origin: { name: "The End" }
+                   },
+                   {
+                       name: "Zombie",
+                       image: "https://static.wikia.nocookie.net/minecraft/images/a/a9/Zombie_Mob_Head.png/revision/latest?cb=20200702011844",
+                       species: "Zombie",
+                       status: "Vivo",
+                       type: "Hostil",
+                       gender: "N/A",
+                       origin: { name: "Minecraft Mundo" }
+                   }
+               ];
+
+               const characterContainer = document.getElementById('character-container');
+               
+               personajes.forEach(character => {
+                   const characterElement = document.createElement('div');
+                   characterElement.classList.add('character');
+                   characterElement.innerHTML = `
+                       <img src="${character.image}" alt="${character.name}" width="100">
+                       <div>
+                           <h3>Nombre: ${character.name}</h3>
+                           <hr>
+                           <p>Especie: ${character.species}</p>
+                           <p>Estado: ${character.status}</p>
+                           <p>Tipo: ${character.type}</p>
+                           <p>Género: ${character.gender}</p>
+                           <p>Lugar de origen: ${character.origin.name}</p>
+                           <hr>
+                       </div>
+                   `;
+                   characterContainer.appendChild(characterElement);
+               });
+
+           } catch (error) {
+               console.error('Hubo un error al cargar los personajes', error);
+           }
+       }
+
+       // Llamamos a la función para cargar los personajes al cargar la página
+       window.onload = obtenerPersonajesDeMinecraft;
+   </script>
+</body>
+</html>
